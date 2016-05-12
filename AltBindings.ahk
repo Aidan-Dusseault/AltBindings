@@ -16,15 +16,10 @@ Return
 
 +!j::
 if (selectingMode = 1) {
-    Loop, 5 {
-        send +
-        send {Left}
-    }
+    send +^{Left}
 }
 else {
-    Loop, 5 {
-        send {Left}
-    }
+    send ^{Left}
 }
 Return
 
@@ -39,15 +34,10 @@ Return
 
 +!l::
 if (selectingMode = 1) {
-    Loop, 5 {
-        send +
-        send {Right}
-    }
+    send +^{Right}
 }
 else {
-    Loop, 5 {
-        send {Right}
-    }
+    send ^{Right}
 }
 Return
 
@@ -62,21 +52,16 @@ Return
 
 +!i::
 if (selectingMode = 1) {
-    Loop, 5 {
-        send +
-        send {Up}
-    }
+    send +{PgUp}
 }
 else {
-    Loop, 5 {
-        send {Up}
-    }
+    send {PgUp}
 }
 Return
 
 !k::
 if (selectingMode = 1) {
-    send !{Down}
+    send +{Down}
 }
 else {
     send {Down}
@@ -85,15 +70,10 @@ Return
 
 +!k::
 if (selectingMode = 1) {
-    Loop, 5 {
-        send +
-        send {Down}
-    }
+    send +{PgDn}
 }
 else {
-    Loop, 5 {
-        send {Down}
-    }
+    send {PgDn}
 }
 Return
 
@@ -108,10 +88,10 @@ Return
 
 +!u::
 if (selectingMode = 1) {
-    send +{PgUp}
+    send +^{PgUp}
 }
 else {
-    send {PgUp}
+    send ^{PgUp}
 }
 Return
 
@@ -126,18 +106,85 @@ Return
 
 +!o::
 if (selectingMode = 1) {
-    send +{PgDn}
+    send +^{PgDn}
 }
 else {
-    send {PgDn}
+    send ^{PgDn}
 }
 Return
 
-!a::
+!q::
+send {Esc}
+Return
+
+!w::
+send {Tab}
+Return
+
+!e::
 if (selectingMode = 0) {
     selectingMode = 1
 }
 else {
     selectingMode = 0
 }
+Return
+
+!a::
+send ^a
+Return
+
+!s::
+send ^s
+Return
+
++!s::
+send ^!s
+Return
+
+!d::
+send {Delete}
+Return
+
++!d::
+send ^{Delete}
+Return
+
+!f::
+send ^f
+Return
+
++!f::
+send ^o
+Return
+
+!z::
+send ^u
+Return
+
++!z::
+send ^y
+Return
+
+!x::
+send ^x
+Return
+
+!c::
+send ^c
+Return
+
+!v::
+send ^v
+Return
+
+!Backspace::
+send ^{Backspace}
+Return
++!Backspace::
+send ^+L
+Return
+
+!`;::
+send ^g
 Return
