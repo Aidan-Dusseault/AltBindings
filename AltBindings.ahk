@@ -126,10 +126,10 @@ Return
 
 +!o::
 if (selectingMode = 1) {
-    send +{PgDown}
+    send +{PgDn}
 }
 else {
-    send {PgDown}
+    send {PgDn}
 }
 Return
 
