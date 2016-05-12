@@ -185,9 +185,6 @@ Return
 +!b::
 send ^w
 send ^{F4}
-
-Backspace::
-send {Backspace}
 Return
 
 !Backspace::
