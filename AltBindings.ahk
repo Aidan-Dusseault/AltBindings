@@ -159,7 +159,7 @@ send ^o
 Return
 
 !z::
-send ^u
+send ^z
 Return
 
 +!z::
