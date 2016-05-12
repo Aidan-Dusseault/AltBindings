@@ -178,9 +178,21 @@ Return
 send ^v
 Return
 
+!b::
+send ^{Tab}
+Return
+
++!b::
+send 
+
+Backspace::
+send {Backspace}
+Return
+
 !Backspace::
 send ^{Backspace}
 Return
+
 +!Backspace::
 send ^+L
 Return
