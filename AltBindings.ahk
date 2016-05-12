@@ -183,7 +183,8 @@ send ^{Tab}
 Return
 
 +!b::
-send 
+send ^w
+send ^{F4}
 
 Backspace::
 send {Backspace}
