@@ -197,7 +197,13 @@ send ^{F4}
 Return
 
 !Backspace::
-send ^{Backspace}
+if (selectingMode = 1) {
+    send {Backspace}
+    selectingMode = 0
+}
+else {
+    send ^{Backspace}
+}
 Return
 
 +!Backspace::
