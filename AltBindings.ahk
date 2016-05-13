@@ -14,6 +14,12 @@ Return
 Alt::
 Return
 
+$LWin::
+Return
+
+$RWin::
+Return
+
 !j::
 if (selectingMode = 1) {
     send +{Left}
@@ -133,6 +139,10 @@ Return
 
 +!w::
 send +{Tab}
+Return
+
+!e::
+send {LWin}
 Return
 
 !p::
