@@ -216,7 +216,7 @@ if (selectingMode = 1) {
     selectingMode = 0
 }
 else {
-    send ^{Right}+^{Left}{Backspace}
+    send {End}+{Home}{Backspace}
 }
 Return
 
