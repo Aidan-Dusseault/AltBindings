@@ -120,6 +120,7 @@ Return
 
 !q::
 send {Esc}
+selectingMode = 0
 Return
 
 !w::
