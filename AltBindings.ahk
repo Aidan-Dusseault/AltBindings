@@ -7,6 +7,10 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 global selectingMode = 0
 global loopMacroNumberOfLoops = 0
 
+!Esc::
+Suspend
+Return
+
 Alt::
 Return
 
