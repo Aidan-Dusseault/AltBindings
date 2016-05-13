@@ -346,7 +346,7 @@ DetermineIfTriggeringCharacterMustBeLooped() {
 
 ;Dismiss selecting mode when acting on selected area
 ~`::
-+`::
+~+`::
 ~1::
 ~!::
 ~@::
