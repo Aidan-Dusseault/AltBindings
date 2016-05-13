@@ -212,6 +212,7 @@ Return
 
 +!Backspace::
 send ^+L
+selectingMode = 0
 Return
 
 !Enter::
