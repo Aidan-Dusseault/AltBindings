@@ -130,7 +130,7 @@ Return
 send +{Tab}
 Return
 
-!e::
+!p::
 if (selectingMode = 0) {
     selectingMode = 1
 }
@@ -169,6 +169,7 @@ Return
 
 !z::
 send ^z
+selectingMode = 0
 Return
 
 +!z::
@@ -177,6 +178,7 @@ Return
 
 !x::
 send ^x
+selectingMode = 0
 Return
 
 !c::
@@ -185,6 +187,7 @@ Return
 
 !v::
 send ^v
+selectingMode = 0
 Return
 
 !b::
@@ -199,7 +202,6 @@ Return
 !Backspace::
 if (selectingMode = 1) {
     send {Backspace}
-    selectingMode = 0
 }
 else {
     send ^{Backspace}
@@ -338,3 +340,122 @@ DetermineIfTriggeringCharacterMustBeLooped() {
         }
     }
 }
+
+;Dismiss selecting mode when acting on selected area
+~`::
++`::
+~1::
+~!::
+~@::
+~3::
+~#::
+~4::
+~$::
+~5::
+~%::
+~6::
+~^::
+~7::
+~&::
+~8::
+~*::
+~9::
+~(::
+~0::
+~)::
+~-::
+~_::
+~=::
+~+::
+~Backspace::
+~Tab::
+~q::
+~+q::
+~w::
+~+w::
+~e::
+~+e::
+~r::
+~+r::
+~t::
+~+t::
+~y::
+~+y::
+~u::
+~+u::
+~i::
+~+i::
+~o::
+~+o::
+~p::
+~+p::
+~[::
+~+[::
+~]::
+~+]::
+~Enter::
+~a::
+~+a::
+~s::
+~+s::
+~d::
+~+d::
+~f::
+~+f::
+~g::
+~+g::
+~h::
+~+h::
+~j::
+~+j::
+~k::
+~+k::
+~l::
+~+l::
+~`;::
+~+`;::
+~'::
+~+'::
+~\::
+~+\::
+~z::
+~+z::
+~x::
+~+x::
+~c::
+~+c::
+~v::
+~+v::
+~b::
+~+b::
+~n::
+~+n::
+~m::
+~+m::
+~,::
+~+,::
+~.::
+~+.::
+~/::
+~+/::
+~Space::
+~Delete::
+~Numpad0::
+~Numpad1::
+~Numpad2::
+~Numpad3::
+~Numpad4::
+~Numpad5::
+~Numpad6::
+~Numpad7::
+~Numpad8::
+~Numpad9::
+~NumpadDot::
+~NumpadDiv::
+~NumpadMult::
+~NumpadAdd::
+~NumpadSub::
+~NumpadEnter::
+~NumpadDel::
+selectingMode = 0
+Return
