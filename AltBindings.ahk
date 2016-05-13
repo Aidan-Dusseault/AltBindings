@@ -203,6 +203,7 @@ Return
 !Backspace::
 if (selectingMode = 1) {
     send {Backspace}
+    selectingMode = 0
 }
 else {
     send ^{Backspace}
