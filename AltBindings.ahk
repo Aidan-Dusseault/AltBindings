@@ -2,6 +2,7 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+#MaxHotkeysPerInterval 999999
 
 global selectingMode = 0
 global loopMacroNumberOfLoops = 0
@@ -265,43 +266,63 @@ Return
 DetermineIfTriggeringCharacterMustBeLooped() {
     send {Alt}
     if (loopMacroNumberOfLoops > 1) {
-        Input, loopMacroTriggeringCharacter, L1 M, {Backspace}{Delete}{Escape}{Left}{Right}{Up}{Down}{Home}{End}{PgUp}{PgDn}{LAlt}
+        Input, loopMacroTriggeringCharacter, L1 M, {Backspace}{Delete}{Escape}{Left}{Right}{Up}{Down}{Home}{End}{PgUp}{PgDn}
         GetKeyState, AltKeyState, Alt
         GetKeyState, ShiftKeyState, Shift
-        if (loopMacroTriggeringCharacter = 0 or loopMacroTriggeringCharacter = 1 or loopMacroTriggeringCharacter = 2 or loopMacroTriggeringCharacter = 3 or loopMacroTriggeringCharacter = 4 or loopMacroTriggeringCharacter = 5 or loopMacroTriggeringCharacter = 6 or loopMacroTriggeringCharacter = 7 or loopMacroTriggeringCharacter = 8 or loopMacroTriggeringCharacter = 9) {
-            send %loopMacroTriggeringCharacter%
+        if ((loopMacroTriggeringCharacter = 0 or loopMacroTriggeringCharacter = 1 or loopMacroTriggeringCharacter = 2 or loopMacroTriggeringCharacter = 3 or loopMacroTriggeringCharacter = 4 or loopMacroTriggeringCharacter = 5 or loopMacroTriggeringCharacter = 6 or loopMacroTriggeringCharacter = 7 or loopMacroTriggeringCharacter = 8 or loopMacroTriggeringCharacter = 9) and AltKeyState = "D") {
+            send !%loopMacroTriggeringCharacter%
         }
         else {
             if (ErrorLevel = "EndKey:Escape") {
             }
             else if (ErrorLevel = "EndKey:Backspace") {
-                Loop, %loopMacroNumberOfLoops% {
-                    if (AltKeyState = "D" and ShiftKeyState = "U") {
+                if (AltKeyState = "D" and ShiftKeyState = "U") {
+                    Loop, %loopMacroNumberOfLoops% {
+                        Sleep 1
                         send !{Backspace}
                     }
-                    else if (AltKeyState = "U" and ShiftKeyState = "D") {
+                }
+                else if (AltKeyState = "U" and ShiftKeyState = "D") {
+                    Loop, %loopMacroNumberOfLoops% {
+                        Sleep 1
                         send +{Backspace}
                     }
-                    else if (AltKeyState = "D" and ShiftKeyState = "D") {
+                }
+                else if (AltKeyState = "D" and ShiftKeyState = "D") {
+                    Loop, %loopMacroNumberOfLoops% {
+                        Sleep 1
                         send +!{Backspace}
                     }
-                    else {
+                }
+                else {
+                    Loop, %loopMacroNumberOfLoops% {
+                        Sleep 1
                         send {Backspace}
                     }
                 }
             }
             else {
-                Loop, %loopMacroNumberOfLoops% {
-                    if (AltKeyState = "D" and ShiftKeyState = "U") {
+                if (AltKeyState = "D" and ShiftKeyState = "U") {
+                    Loop, %loopMacroNumberOfLoops% {
+                        Sleep 1
                         send !%loopMacroTriggeringCharacter%
                     }
-                    else if (AltKeyState = "U" and ShiftKeyState = "D") {
+                }
+                else if (AltKeyState = "U" and ShiftKeyState = "D") {
+                    Loop, %loopMacroNumberOfLoops% {
+                        Sleep 1
                         send +%loopMacroTriggeringCharacter%
                     }
-                    else if (AltKeyState = "D" and ShiftKeyState = "D") {
+                }
+                else if (AltKeyState = "D" and ShiftKeyState = "D") {
+                    Loop, %loopMacroNumberOfLoops% {
+                        Sleep 1
                         send +!%loopMacroTriggeringCharacter%
                     }
-                    else {
+                }
+                else {
+                    Loop, %loopMacroNumberOfLoops% {
+                        Sleep 1
                         send %loopMacroTriggeringCharacter%
                     }
                 }
