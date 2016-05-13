@@ -211,8 +211,13 @@ else {
 Return
 
 +!Backspace::
-send ^+L
-selectingMode = 0
+if (selectingMode = 1) {
+    send {Backspace}
+    selectingMode = 0
+}
+else {
+    send ^{Right}+^{Left}{Backspace}
+}
 Return
 
 !Enter::
