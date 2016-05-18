@@ -14,10 +14,19 @@ Return
 Alt::
 Return
 
-$LWin::
+!Space::
+CoordMode, Mouse, Screen
+MouseGetPos, MouseX, MouseY
+send {Click 0, %A_ScreenHeight%}
+send {Click %MouseX%, %MouseY%, 0}
 Return
 
-$RWin::
+LWin::
+Suspend Permit
+Return
+
+RWin::
+Suspend Permit
 Return
 
 !j::
@@ -141,10 +150,6 @@ Return
 send +{Tab}
 Return
 
-!e::
-send {LWin}
-Return
-
 !p::
 if (selectingMode = 0) {
     selectingMode = 1
@@ -212,6 +217,10 @@ Return
 +!b::
 send ^w
 send ^{F4}
+Return
+
+!n::
+send ^n
 Return
 
 !Backspace::
