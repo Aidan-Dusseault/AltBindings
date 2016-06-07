@@ -14,6 +14,10 @@ Return
 Alt::
 Return
 
+Capslock::
+send {RAlt}
+Return
+
 !Space::
 CoordMode, Mouse, Screen
 MouseGetPos, MouseX, MouseY
