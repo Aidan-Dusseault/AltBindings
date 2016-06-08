@@ -15,7 +15,7 @@ Alt::
 Return
 
 Capslock::
-send {RAlt}
+send {ScrollLock}
 Return
 
 !Space::
