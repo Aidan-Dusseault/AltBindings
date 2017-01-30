@@ -1,11 +1,13 @@
 ﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
+#SingleInstance
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #MaxHotkeysPerInterval 999999
 
 global selectingMode = 0
 global loopMacroNumberOfLoops = 0
+global loopMax = 200
 
 !`::
 Suspend
@@ -15,15 +17,16 @@ Alt::
 Return
 
 Capslock::
-send {ScrollLock}
+send {F12}
 Return
 
-!Space::
-CoordMode, Mouse, Screen
-MouseGetPos, MouseX, MouseY
-send {Click 0, %A_ScreenHeight%}
-send {Click %MouseX%, %MouseY%, 0}
-Return
+;Windows Search
+;!Space::
+;CoordMode, Mouse, Screen
+;MouseGetPos, MouseX, MouseY
+;send {Click 0, %A_ScreenHeight%}
+;send {Click %MouseX%, %MouseY%, 0}
+;Return
 
 LWin::
 Suspend Permit
@@ -321,24 +324,36 @@ DetermineIfTriggeringCharacterMustBeLooped() {
             else if (ErrorLevel = "EndKey:Backspace") {
                 if (AltKeyState = "D" and ShiftKeyState = "U") {
                     Loop, %loopMacroNumberOfLoops% {
+						if (GetKeyState("Escape") or A_Index >= loopMax) {
+							Break
+						}
                         Sleep 1
                         send !{Backspace}
                     }
                 }
                 else if (AltKeyState = "U" and ShiftKeyState = "D") {
                     Loop, %loopMacroNumberOfLoops% {
+						if (GetKeyState("Escape") or A_Index >= loopMax) {
+							Break
+						}
                         Sleep 1
                         send +{Backspace}
                     }
                 }
                 else if (AltKeyState = "D" and ShiftKeyState = "D") {
                     Loop, %loopMacroNumberOfLoops% {
+						if (GetKeyState("Escape") or A_Index >= loopMax) {
+							Break
+						}
                         Sleep 1
                         send +!{Backspace}
                     }
                 }
                 else {
                     Loop, %loopMacroNumberOfLoops% {
+						if (GetKeyState("Escape") or A_Index >= loopMax) {
+							Break
+						}
                         Sleep 1
                         send {Backspace}
                     }
@@ -347,24 +362,36 @@ DetermineIfTriggeringCharacterMustBeLooped() {
             else {
                 if (AltKeyState = "D" and ShiftKeyState = "U") {
                     Loop, %loopMacroNumberOfLoops% {
+						if (GetKeyState("Escape") or A_Index >= loopMax) {
+							Break
+						}
                         Sleep 1
                         send !%loopMacroTriggeringCharacter%
                     }
                 }
                 else if (AltKeyState = "U" and ShiftKeyState = "D") {
                     Loop, %loopMacroNumberOfLoops% {
+						if (GetKeyState("Escape") or A_Index >= loopMax) {
+							Break
+						}
                         Sleep 1
                         send +%loopMacroTriggeringCharacter%
                     }
                 }
                 else if (AltKeyState = "D" and ShiftKeyState = "D") {
                     Loop, %loopMacroNumberOfLoops% {
+						if (GetKeyState("Escape") or A_Index >= loopMax) {
+							Break
+						}
                         Sleep 1
                         send +!%loopMacroTriggeringCharacter%
                     }
                 }
                 else {
                     Loop, %loopMacroNumberOfLoops% {
+						if (GetKeyState("Escape") or A_Index >= loopMax) {
+							Break
+						}
                         Sleep 1
                         send %loopMacroTriggeringCharacter%
                     }
@@ -493,4 +520,69 @@ DetermineIfTriggeringCharacterMustBeLooped() {
 ~NumpadEnter::
 ~NumpadDel::
 selectingMode = 0
+Return
+
+#IfWinActive World of Warcraft
+
+LWin::
+Return
+
+RWin::
+Return
+
+~!q::
+Return
+
+~!e::
+Return
+
+~!r::
+Return
+
+~!t::
+Return
+
+~!f::
+Return
+
+~!g::
+Return
+
+~!1::
+Return
+
+~!2::
+Return
+
+~!3::
+Return
+
+~!4::
+Return
+
+~!5::
+Return
+
+~!6::
+Return
+
+~!7::
+Return
+
+~!8::
+Return
+
+~!9::
+Return
+
+~!0::
+Return
+
+~!z::
+Return
+
+~!x::
+Return
+
+~!c::
 Return
