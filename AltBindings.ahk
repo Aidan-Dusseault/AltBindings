@@ -17,7 +17,11 @@ Alt::
 Return
 
 Capslock::
-send {F12}
+send {Pause DOWN}
+Return
+
+Capslock UP::
+send {Pause UP}
 Return
 
 ;Windows Search
