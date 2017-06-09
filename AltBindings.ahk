@@ -16,13 +16,14 @@ Return
 Alt::
 Return
 
-Capslock::
-send {Pause DOWN}
+*Capslock::
+send {Blind}{Pause DownTemp}
 Return
 
-Capslock UP::
-send {Pause UP}
+*Capslock UP::
+send {Blind}{Pause UP}
 Return
+
 
 ;Windows Search
 ;!Space::
