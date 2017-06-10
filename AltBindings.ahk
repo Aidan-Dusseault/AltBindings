@@ -17,10 +17,12 @@ Alt::
 Return
 
 *Capslock::
+Suspend Permit
 send {Blind}{Pause DownTemp}
 Return
 
 *Capslock UP::
+Suspend Permit
 send {Blind}{Pause UP}
 Return
 
