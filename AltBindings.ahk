@@ -4,28 +4,42 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #MaxHotkeysPerInterval 999999
+#InstallKeybdHook
+#InstallMouseHook
 
 global selectingMode = 0
 global loopMacroNumberOfLoops = 0
 global loopMax = 200
 
+global spacetoggle = 0
+
+SetCapsLockState, AlwaysOff
+SetNumLockState, AlwaysOn
+SetScrollLockState, AlwaysOff
+
+GroupAdd, EXCLUDE_APPS, Heroes of the Storm
+GroupAdd, EXCLUDE_APPS, Mass Effect 3
+GroupAdd, EXCLUDE_APPS, Risk of Rain 2
+GroupAdd, EXCLUDE_APPS, Warframe
+GroupAdd, EXCLUDE_APPS, World of Warcraft
+GroupAdd, EXCLUDE_APPS, Age of Empires II
+Return
+
 !`::
 Suspend
+RStop := 1
+LStop := 1
 Return
 
-Alt::
-Return
-
-*Capslock::
+*CapsLock::
 Suspend Permit
-send {Blind}{Pause DownTemp}
+send {Blind}{NumpadClear Down}
 Return
 
-*Capslock UP::
+*CapsLock UP::
 Suspend Permit
-send {Blind}{Pause UP}
+send {Blind}{NumpadClear Up}
 Return
-
 
 ;Windows Search
 ;!Space::
@@ -41,6 +55,12 @@ Return
 
 RWin::
 Suspend Permit
+Return
+
+#IfWinNotActive ahk_group EXCLUDE_APPS
+
+*!e UP::
+Send !{PgUp Up}
 Return
 
 !j::
@@ -224,6 +244,11 @@ send ^v
 selectingMode = 0
 Return
 
+!+v::
+send ^+v
+selectingMode = 0
+Return
+
 !b::
 send ^{Tab}
 Return
@@ -264,151 +289,6 @@ Return
 !`;::
 send ^g
 Return
-
-;Loop macro
-!0::
-loopMacroNumberOfLoops := loopMacroNumberOfLoops*10
-DetermineIfTriggeringCharacterMustBeLooped()
-Return
-
-!1::
-loopMacroNumberOfLoops := loopMacroNumberOfLoops*10 + 1
-DetermineIfTriggeringCharacterMustBeLooped()
-Return
-
-!2::
-loopMacroNumberOfLoops := loopMacroNumberOfLoops*10 + 2
-DetermineIfTriggeringCharacterMustBeLooped()
-Return
-
-!3::
-loopMacroNumberOfLoops := loopMacroNumberOfLoops*10 + 3
-DetermineIfTriggeringCharacterMustBeLooped()
-Return
-
-!4::
-loopMacroNumberOfLoops := loopMacroNumberOfLoops*10 + 4
-DetermineIfTriggeringCharacterMustBeLooped()
-Return
-
-!5::
-loopMacroNumberOfLoops := loopMacroNumberOfLoops*10 + 5
-DetermineIfTriggeringCharacterMustBeLooped()
-Return
-
-!6::
-loopMacroNumberOfLoops := loopMacroNumberOfLoops*10 + 6
-DetermineIfTriggeringCharacterMustBeLooped()
-Return
-
-!7::
-loopMacroNumberOfLoops := loopMacroNumberOfLoops*10 + 7
-DetermineIfTriggeringCharacterMustBeLooped()
-Return
-
-!8::
-loopMacroNumberOfLoops := loopMacroNumberOfLoops*10 + 8
-DetermineIfTriggeringCharacterMustBeLooped()
-Return
-
-!9::
-loopMacroNumberOfLoops := loopMacroNumberOfLoops*10 + 9
-DetermineIfTriggeringCharacterMustBeLooped()
-Return
-
-DetermineIfTriggeringCharacterMustBeLooped() {
-    send {Alt}
-    if (loopMacroNumberOfLoops > 1) {
-        Input, loopMacroTriggeringCharacter, L1 M, {Backspace}{Delete}{Escape}{Left}{Right}{Up}{Down}{Home}{End}{PgUp}{PgDn}
-        GetKeyState, AltKeyState, Alt
-        GetKeyState, ShiftKeyState, Shift
-        if ((loopMacroTriggeringCharacter = 0 or loopMacroTriggeringCharacter = 1 or loopMacroTriggeringCharacter = 2 or loopMacroTriggeringCharacter = 3 or loopMacroTriggeringCharacter = 4 or loopMacroTriggeringCharacter = 5 or loopMacroTriggeringCharacter = 6 or loopMacroTriggeringCharacter = 7 or loopMacroTriggeringCharacter = 8 or loopMacroTriggeringCharacter = 9) and AltKeyState = "D") {
-            send !%loopMacroTriggeringCharacter%
-        }
-        else {
-            if (ErrorLevel = "EndKey:Escape") {
-            }
-            else if (ErrorLevel = "EndKey:Backspace") {
-                if (AltKeyState = "D" and ShiftKeyState = "U") {
-                    Loop, %loopMacroNumberOfLoops% {
-						if (GetKeyState("Escape") or A_Index >= loopMax) {
-							Break
-						}
-                        Sleep 1
-                        send !{Backspace}
-                    }
-                }
-                else if (AltKeyState = "U" and ShiftKeyState = "D") {
-                    Loop, %loopMacroNumberOfLoops% {
-						if (GetKeyState("Escape") or A_Index >= loopMax) {
-							Break
-						}
-                        Sleep 1
-                        send +{Backspace}
-                    }
-                }
-                else if (AltKeyState = "D" and ShiftKeyState = "D") {
-                    Loop, %loopMacroNumberOfLoops% {
-						if (GetKeyState("Escape") or A_Index >= loopMax) {
-							Break
-						}
-                        Sleep 1
-                        send +!{Backspace}
-                    }
-                }
-                else {
-                    Loop, %loopMacroNumberOfLoops% {
-						if (GetKeyState("Escape") or A_Index >= loopMax) {
-							Break
-						}
-                        Sleep 1
-                        send {Backspace}
-                    }
-                }
-            }
-            else {
-                if (AltKeyState = "D" and ShiftKeyState = "U") {
-                    Loop, %loopMacroNumberOfLoops% {
-						if (GetKeyState("Escape") or A_Index >= loopMax) {
-							Break
-						}
-                        Sleep 1
-                        send !%loopMacroTriggeringCharacter%
-                    }
-                }
-                else if (AltKeyState = "U" and ShiftKeyState = "D") {
-                    Loop, %loopMacroNumberOfLoops% {
-						if (GetKeyState("Escape") or A_Index >= loopMax) {
-							Break
-						}
-                        Sleep 1
-                        send +%loopMacroTriggeringCharacter%
-                    }
-                }
-                else if (AltKeyState = "D" and ShiftKeyState = "D") {
-                    Loop, %loopMacroNumberOfLoops% {
-						if (GetKeyState("Escape") or A_Index >= loopMax) {
-							Break
-						}
-                        Sleep 1
-                        send +!%loopMacroTriggeringCharacter%
-                    }
-                }
-                else {
-                    Loop, %loopMacroNumberOfLoops% {
-						if (GetKeyState("Escape") or A_Index >= loopMax) {
-							Break
-						}
-                        Sleep 1
-                        send %loopMacroTriggeringCharacter%
-                    }
-                }
-            }
-            loopMacroNumberOfLoops := 0
-            loopMacroTriggeringCharacter =
-        }
-    }
-}
 
 ;Dismiss selecting mode when acting on selected area
 ~`::
@@ -529,67 +409,14 @@ DetermineIfTriggeringCharacterMustBeLooped() {
 selectingMode = 0
 Return
 
-#IfWinActive World of Warcraft
+#Include %A_ScriptDir%/AppSpecific/RiskOfRain2.ahk
 
-LWin::
-Return
+#Include %A_ScriptDir%/AppSpecific/WoW.ahk
 
-RWin::
-Return
+#Include %A_ScriptDir%/AppSpecific/HotS.ahk
 
-~!q::
-Return
+#Include %A_ScriptDir%/AppSpecific/Warframe.ahk
 
-~!e::
-Return
+#Include %A_ScriptDir%/AppSpecific/DwarfFortress.ahk
 
-~!r::
-Return
-
-~!t::
-Return
-
-~!f::
-Return
-
-~!g::
-Return
-
-~!1::
-Return
-
-~!2::
-Return
-
-~!3::
-Return
-
-~!4::
-Return
-
-~!5::
-Return
-
-~!6::
-Return
-
-~!7::
-Return
-
-~!8::
-Return
-
-~!9::
-Return
-
-~!0::
-Return
-
-~!z::
-Return
-
-~!x::
-Return
-
-~!c::
-Return
+#Include %A_ScriptDir%/AppSpecific/ME3.ahk
