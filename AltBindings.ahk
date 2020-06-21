@@ -16,6 +16,7 @@ global spacetoggle = 0
 SetCapsLockState, AlwaysOff
 SetNumLockState, AlwaysOn
 SetScrollLockState, AlwaysOff
+SetTitleMatchMode, 3
 
 GroupAdd, EXCLUDE_APPS, Heroes of the Storm
 GroupAdd, EXCLUDE_APPS, Mass Effect 3
