@@ -24,6 +24,7 @@ GroupAdd, EXCLUDE_APPS, ahk_exe Risk of Rain 2.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe Warframe.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe WoW.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe AoE2DE_s.exe
+GroupAdd, EXCLUDE_APPS, ahk_class Diablo II
 Return
 
 !`::
@@ -409,6 +410,8 @@ Return
 ~NumpadDel::
 selectingMode = 0
 Return
+
+#IfWinActive
 
 #Include %A_ScriptDir%/AppSpecific/RiskOfRain2.ahk
 

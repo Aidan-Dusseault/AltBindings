@@ -62,3 +62,5 @@ Return
 
 ~!c::
 Return
+
+#IfWinActive

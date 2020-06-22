@@ -413,3 +413,5 @@ Return
 
 ~^+p::
 Return
+
+#IfWinActive

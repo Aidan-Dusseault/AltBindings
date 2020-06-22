@@ -23,3 +23,5 @@ if (autoFire = 1) {
 	return
 }
 return
+
+#IfWinActive

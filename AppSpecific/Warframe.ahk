@@ -9,3 +9,5 @@ Return
 Send {LShift Up}
 Send {LCtrl Up}
 Return
+
+#IfWinActive

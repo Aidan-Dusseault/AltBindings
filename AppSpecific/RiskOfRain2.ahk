@@ -21,3 +21,5 @@ Return
 Space UP::
 Send {Space Up}
 Return
+
+#IfWinActive
