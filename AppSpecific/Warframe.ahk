@@ -1,4 +1,4 @@
-﻿#IfWinActive Warframe
+﻿#IfWinActive ahk_exe Warframe.exe
 *XButton1::
 Send {LShift Down}
 Send {LCtrl Down}

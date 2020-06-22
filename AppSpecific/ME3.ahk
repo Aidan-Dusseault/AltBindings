@@ -1,4 +1,4 @@
-﻿#IfWinActive Mass Effect 3
+﻿#IfWinActive ahk_exe MassEffect3.exe
 
 *$End::
 autoFire := !autoFire

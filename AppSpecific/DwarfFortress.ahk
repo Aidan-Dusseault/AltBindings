@@ -1,4 +1,4 @@
-﻿#IfWinActive Dwarf Fortress
+﻿#IfWinActive ahk_exe Dwarf Fortress.exe
 ~!q::
 Return
 

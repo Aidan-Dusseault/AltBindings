@@ -1,4 +1,5 @@
-﻿#IfWinActive Risk of Rain 2
+﻿#IfWinActive ahk_exe Risk of Rain 2.exe
+
 LCtrl::
 if (spacetoggle = 0) {
     spacetoggle = 1

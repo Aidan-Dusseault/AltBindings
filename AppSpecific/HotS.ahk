@@ -1,4 +1,4 @@
-#IfWinActive Heroes of the Storm
+#IfWinActive ahk_exe HeroesOfTheStorm_x64.exe
 
 ~!q::
 Return

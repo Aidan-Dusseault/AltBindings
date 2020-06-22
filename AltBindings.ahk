@@ -18,12 +18,12 @@ SetNumLockState, AlwaysOn
 SetScrollLockState, AlwaysOff
 SetTitleMatchMode, 3
 
-GroupAdd, EXCLUDE_APPS, Heroes of the Storm
-GroupAdd, EXCLUDE_APPS, Mass Effect 3
-GroupAdd, EXCLUDE_APPS, Risk of Rain 2
-GroupAdd, EXCLUDE_APPS, Warframe
-GroupAdd, EXCLUDE_APPS, World of Warcraft
-GroupAdd, EXCLUDE_APPS, Age of Empires II
+GroupAdd, EXCLUDE_APPS, ahk_exe HeroesOfTheStorm_x64.exe
+GroupAdd, EXCLUDE_APPS, ahk_exe MassEffect3.exe
+GroupAdd, EXCLUDE_APPS, ahk_exe Risk of Rain 2.exe
+GroupAdd, EXCLUDE_APPS, ahk_exe Warframe.exe
+GroupAdd, EXCLUDE_APPS, ahk_exe WoW.exe
+GroupAdd, EXCLUDE_APPS, ahk_exe AoE2DE_s.exe
 Return
 
 !`::

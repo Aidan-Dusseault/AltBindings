@@ -1,4 +1,4 @@
-#IfWinActive World of Warcraft
+#IfWinActive ahk_exe WoW.exe
 
 LWin::
 Return
