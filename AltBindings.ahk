@@ -13,6 +13,7 @@ global loopMax = 200
 
 global spacetoggle = 0
 
+
 SetCapsLockState, AlwaysOff
 SetNumLockState, AlwaysOn
 SetScrollLockState, AlwaysOff
@@ -59,7 +60,23 @@ RWin::
 Suspend Permit
 Return
 
+*!$XButton1::
+Send {Blind}{PgDn}
+Return
+
+*!$XButton2::
+Send {Blind}{PgUp}
+Return
+
 #IfWinNotActive ahk_group EXCLUDE_APPS
+
+*!WheelDown::
+Send {Blind}{WheelRight}
+Return
+
+*!WheelUp::
+Send {Blind}{WheelLeft}
+Return
 
 *!e UP::
 Send !{PgUp Up}
