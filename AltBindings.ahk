@@ -11,9 +11,6 @@ global selectingMode = 0
 global loopMacroNumberOfLoops = 0
 global loopMax = 200
 
-global spacetoggle = 0
-
-
 SetCapsLockState, AlwaysOff
 SetNumLockState, AlwaysOn
 SetScrollLockState, AlwaysOff
@@ -25,13 +22,21 @@ GroupAdd, EXCLUDE_APPS, ahk_exe Risk of Rain 2.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe Warframe.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe WoW.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe AoE2DE_s.exe
-GroupAdd, EXCLUDE_APPS, ahk_class Diablo II
+GroupAdd, EXCLUDE_APPS, ahk_exe Diablo II.exe
+GroupAdd, EXCLUDE_APPS, ahk_exe ffxiv_dx11.exe
 Return
+
+MouseIsOver(WinTitle) {
+    MouseGetPos,,, Win
+    return WinExist(WinTitle . " ahk_id " . Win)
+}
 
 !`::
 Suspend
 RStop := 1
 LStop := 1
+Click, right, up
+Click, left, up
 Return
 
 *CapsLock::
@@ -56,9 +61,9 @@ LWin::
 Suspend Permit
 Return
 
-RWin::
-Suspend Permit
-Return
+;RWin::
+;Suspend Permit
+;Return
 
 *!$XButton1::
 Send {Blind}{PgDn}
@@ -441,3 +446,9 @@ Return
 #Include %A_ScriptDir%/AppSpecific/DwarfFortress.ahk
 
 #Include %A_ScriptDir%/AppSpecific/ME3.ahk
+
+#Include %A_ScriptDir%/AppSpecific/FFXIV.ahk
+
+#Include %A_ScriptDir%/AppSpecific/DST.ahk
+
+#Include %A_ScriptDir%/AppSpecific/TTS.ahk

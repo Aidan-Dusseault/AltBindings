@@ -1,19 +1,44 @@
 ﻿#IfWinActive ahk_exe Risk of Rain 2.exe
 
-LCtrl::
-if (spacetoggle = 0) {
-    spacetoggle = 1
-	Send {Space Down}
+*$F14::
+RoR2AutoEquipment := !RoR2AutoEquipment
+if (RoR2AutoEquipment and !GetKeyState("Tab", "P")) {
+	Send {Blind}{LAlt}
+	SetTimer RoR2AutoEquipment, 100
+}
+if (!RoR2AutoEquipment) {
+	SetTimer RoR2AutoEquipment, Delete
+}
+return
+RoR2AutoEquipment:
+	if (WinActive("ahk_exe Risk of Rain 2.exe")  and !GetKeyState("Tab", "P")) {
+		Send {Blind}{LAlt}
+	}
+Return
+
+RoR2SpaceToggle = 0
+
+*LCtrl::
+if (RoR2SpaceToggle = 0) {
+    RoR2SpaceToggle = 1
+	Send {Blind}{Space Down}
 }
 else {
-    spacetoggle = 0
-	Send {Space Up}
+    RoR2SpaceToggle = 0
+}
+Return
+
+*LCtrl UP::
+if (RoR2SpaceToggle = 0) {
+	Send {Blind}{Space Up}
 }
 Return
 
 Space::
-if (spacetoggle = 1) {
-    spacetoggle = 0
+if (RoR2SpaceToggle = 1) {
+    RoR2SpaceToggle = 0
+	Send {Space Up}
+	Sleep, 30
 }
 Send {Space Down}
 Return
