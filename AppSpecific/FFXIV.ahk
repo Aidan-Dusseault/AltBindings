@@ -133,6 +133,18 @@ Return
 	FFXIVClick = 0
 Return
 
+;*$WheelUp::
+;	Send {Blind}{[ down}
+;	Sleep 250
+;	Send {Blind}{[ up}
+;Return
+;
+;*$WheelDown::
+;	Send {Blind}{] down}
+;	Sleep 250
+;	Send {Blind}{] up}
+;Return
+
 *$WheelUp::
 	if (GetKeyState("RButton")) {
 		Send {Blind}{[ down}

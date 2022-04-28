@@ -452,3 +452,5 @@ Return
 #Include %A_ScriptDir%/AppSpecific/DST.ahk
 
 #Include %A_ScriptDir%/AppSpecific/TTS.ahk
+
+#Include %A_ScriptDir%/AppSpecific/Greenshot.ahk
