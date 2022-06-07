@@ -145,26 +145,57 @@ Return
 ;	Send {Blind}{] up}
 ;Return
 
-*$WheelUp::
-	if (GetKeyState("RButton")) {
-		Send {Blind}{[ down}
-		Sleep 10
-		Send {Blind}{[ up}
-	}
-	else {
-		Send {Blind}{WheelUp}
-	}
+;*$WheelUp::
+;	if (GetKeyState("RButton")) {
+;		Send {Blind}{[ down}
+;		Sleep 10
+;		Send {Blind}{[ up}
+;		Sleep 10
+;		Send {Blind}{Numpad0 down}
+;		Sleep 10
+;		Send {Blind}{Numpad0 up}
+;	}
+;	else {
+;		Send {Blind}{WheelUp}
+;	}
+;Return
+
+;*$WheelDown::
+;	if (GetKeyState("RButton")) {
+;		Send {Blind}{] down}
+;		Sleep 10
+;		Send {Blind}{] up}
+;		Sleep 10
+;		Send {Blind}{Numpad0 down}
+;		Sleep 10
+;		Send {Blind}{Numpad0 up}
+;	}
+;	else {
+;		Send {Blind}{WheelDown}
+;	}
+;Return
+
+^$WheelUp::
+	Send {Blind}{[ down}
+	Sleep 10
+	Send {Blind}{[ up}
 Return
 
-*$WheelDown::
-	if (GetKeyState("RButton")) {
-		Send {Blind}{] down}
-		Sleep 10
-		Send {Blind}{] up}
-	}
-	else {
-		Send {Blind}{WheelDown}
-	}
+^$WheelDown::
+	Send {Blind}{] down}
+	Sleep 10
+	Send {Blind}{] up}
+Return
+
+~^i::
+Sleep 10
+Send {k down}
+Sleep 10
+Send {k up}
+Sleep 10
+Send {g down}
+Sleep 10
+Send {g up}
 Return
 
 #IfWinActive
