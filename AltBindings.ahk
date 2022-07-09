@@ -68,6 +68,8 @@ Return
 ;Suspend Permit
 ;Return
 
+#IfWinNotActive ahk_group EXCLUDE_APPS
+
 *!$XButton1::
 Send {Blind}{PgDn}
 Return
@@ -75,8 +77,6 @@ Return
 *!$XButton2::
 Send {Blind}{PgUp}
 Return
-
-#IfWinNotActive ahk_group EXCLUDE_APPS
 
 *!WheelDown::
 Send {Blind}{WheelRight}
