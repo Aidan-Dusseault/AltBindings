@@ -24,6 +24,9 @@ GroupAdd, EXCLUDE_APPS, ahk_exe WoW.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe AoE2DE_s.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe Diablo II.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe ffxiv_dx11.exe
+GroupAdd, EXCLUDE_APPS, ahk_exe Control_DX12.exe
+GroupAdd, EXCLUDE_APPS, ahk_exe Control_DX11.exe
+GroupAdd, EXCLUDE_APPS, ahk_exe GGST.exe
 Return
 
 MouseIsOver(WinTitle) {
