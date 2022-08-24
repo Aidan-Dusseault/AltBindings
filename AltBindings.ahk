@@ -26,7 +26,7 @@ GroupAdd, EXCLUDE_APPS, ahk_exe Diablo II.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe ffxiv_dx11.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe Control_DX12.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe Control_DX11.exe
-GroupAdd, EXCLUDE_APPS, ahk_exe GGST.exe
+GroupAdd, EXCLUDE_APPS, ahk_exe GGST-Win64-Shipping.exe
 Return
 
 MouseIsOver(WinTitle) {
@@ -40,6 +40,40 @@ RStop := 1
 LStop := 1
 Click, right, up
 Click, left, up
+Return
+
+^!+ScrollLock::
+Suspend Permit
+Send {CapsLock}
+Return
+
+^!+F9::
+DetectHiddenWindows, On
+WinGet, rtxPID, PID, ahk_exe NVIDIA RTX Voice.exe
+Process, Close, %rtxPID%
+Process, WaitClose, %rtxPID%
+Run, "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\NVIDIA Corporation\NVIDIA RTX Voice"
+DetectHiddenWindows, Off
+Return
+
+^!+F10::
+Run, powercfg -s 64d49a71-5b78-4876-96f9-a84cb0e92646
+DetectHiddenWindows, On
+WinGet, rtxPID, PID, ahk_exe NVIDIA RTX Voice.exe
+Process, Close, %rtxPID%
+Process, WaitClose, %rtxPID%
+Run, "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\NVIDIA Corporation\NVIDIA RTX Voice"
+DetectHiddenWindows, Off
+Return
+
+^!+F11::
+Run, powercfg -s 381b4222-f694-41f0-9685-ff5bb260df2e
+DetectHiddenWindows, On
+WinGet, rtxPID, PID, ahk_exe NVIDIA RTX Voice.exe
+Process, Close, %rtxPID%
+Process, WaitClose, %rtxPID%
+Run, "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\NVIDIA Corporation\NVIDIA RTX Voice"
+DetectHiddenWindows, Off
 Return
 
 *CapsLock::
@@ -457,3 +491,5 @@ Return
 #Include %A_ScriptDir%/AppSpecific/TTS.ahk
 
 #Include %A_ScriptDir%/AppSpecific/Greenshot.ahk
+
+#Include %A_ScriptDir%/AppSpecific/GGST.ahk
