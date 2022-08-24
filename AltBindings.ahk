@@ -54,6 +54,8 @@ Process, Close, %rtxPID%
 Process, WaitClose, %rtxPID%
 Run, "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\NVIDIA Corporation\NVIDIA RTX Voice"
 DetectHiddenWindows, Off
+WinWait, ahk_exe NVIDIA RTX Voice.exe, "NVIDIA RTX Voice"
+WinHide, ahk_exe NVIDIA RTX Voice.exe
 Return
 
 ^!+F10::
@@ -64,6 +66,8 @@ Process, Close, %rtxPID%
 Process, WaitClose, %rtxPID%
 Run, "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\NVIDIA Corporation\NVIDIA RTX Voice"
 DetectHiddenWindows, Off
+WinWait, ahk_exe NVIDIA RTX Voice.exe, "NVIDIA RTX Voice"
+WinHide, ahk_exe NVIDIA RTX Voice.exe
 Return
 
 ^!+F11::
@@ -74,6 +78,8 @@ Process, Close, %rtxPID%
 Process, WaitClose, %rtxPID%
 Run, "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\NVIDIA Corporation\NVIDIA RTX Voice"
 DetectHiddenWindows, Off
+WinWait, ahk_exe NVIDIA RTX Voice.exe, "NVIDIA RTX Voice"
+WinHide, ahk_exe NVIDIA RTX Voice.exe
 Return
 
 *CapsLock::
