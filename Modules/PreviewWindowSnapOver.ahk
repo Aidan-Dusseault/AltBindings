@@ -1,15 +1,12 @@
-;SetTimer CheckMousePos, 10
-;.
-;.
-
 PreviewWindowSnapOverEnabled = 0
 PreviewWindowSnapOverDebugTooltip = 0
+PreviewWindowSnapOverAlwaysOnTop = 0
 
 ^!#Tab::
 	if (PreviewWindowSnapOverEnabled) {
 		SetTimer CheckMousePos, Delete
 	}
-	if (PreviewWindowSnapOverEnabled=0) {
+	else {
 		;DetectHiddenWindows, On
 		SetTimer CheckMousePos, 10
 	}
@@ -23,6 +20,16 @@ Return
 	}
 Return
 
+^!#F1::
+  PreviewWindowSnapOverAlwaysOnTop := !PreviewWindowSnapOverAlwaysOnTop
+  if (PreviewWindowSnapOverAlwaysOnTop) {
+    WinSet, AlwaysOnTop, On, Windowed Projector (Preview)
+  }
+  else {
+    WinSet, AlwaysOnTop, Off, Windowed Projector (Preview)
+  }
+Return
+
 CheckMousePos:
   CoordMode, Mouse, Screen
   MouseGetPos, PreviewWindowSnapOverMouseX,PreviewWindowSnapOverMouseY
@@ -33,9 +40,14 @@ CheckMousePos:
   if ((PreviewWindowSnapOverMouseY > PreviewWindowSnapOverWinY) and PreviewWindowSnapOverMouseY < (PreviewWindowSnapOverWinY+PreviewWindowSnapOverWinHeight)) {
 	if ((PreviewWindowSnapOverMouseX > PreviewWindowSnapOverWinX) and PreviewWindowSnapOverMouseX < (PreviewWindowSnapOverWinX + PreviewWindowSnapOverWinWidth*0.5)) {
 		MouseMove, PreviewWindowSnapOverWinX+PreviewWindowSnapOverWinWidth, PreviewWindowSnapOverMouseY, 0
+		;WinActivate, ahk_class Shell_TrayWnd
 	}
 	if ((PreviewWindowSnapOverMouseX < (PreviewWindowSnapOverWinX + PreviewWindowSnapOverWinWidth)) and PreviewWindowSnapOverMouseX > PreviewWindowSnapOverWinX + PreviewWindowSnapOverWinWidth*0.5) {
 		MouseMove, PreviewWindowSnapOverWinX, PreviewWindowSnapOverMouseY, 0
+		WinActivate, Windowed Projector (Preview)
+		if (PreviewWindowSnapOverAlwaysOnTop) {
+		  WinSet, AlwaysOnTop, On, Windowed Projector (Preview)
+		}
 	}
   }
 Return

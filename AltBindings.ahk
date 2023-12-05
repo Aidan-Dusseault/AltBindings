@@ -102,13 +102,13 @@ Return
 ;send {Click %MouseX%, %MouseY%, 0}
 ;Return
 
-LWin::
+;Disable empty Windows Key while allowing Win+Hotkeys to work
+~LWin Up::
 Suspend Permit
-Return
-
-;RWin::
-;Suspend Permit
-;Return
+return
+~RWin Up::
+Suspend Permit
+return
 
 #IfWinNotActive ahk_group EXCLUDE_APPS
 
