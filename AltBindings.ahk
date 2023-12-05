@@ -27,6 +27,8 @@ GroupAdd, EXCLUDE_APPS, ahk_exe ffxiv_dx11.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe Control_DX12.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe Control_DX11.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe GGST-Win64-Shipping.exe
+GroupAdd, EXCLUDE_APPS, ahk_exe Darktide.exe
+GroupAdd, EXCLUDE_APPS, ahk_exe SoTGame.exe
 Return
 
 MouseIsOver(WinTitle) {
@@ -109,6 +111,12 @@ Return
 ;Return
 
 #IfWinNotActive ahk_group EXCLUDE_APPS
+
+;Move Mouse During Search
+~$!Space::
+CoordMode, Mouse, Screen
+MouseMove, 0, %A_ScreenHeight%
+Return
 
 *!$XButton1::
 Send {Blind}{PgDn}
@@ -476,6 +484,12 @@ Return
 selectingMode = 0
 Return
 
+;;;Modules
+#Include %A_ScriptDir%/Modules/PreviewWindowSnapOver.ahk
+
+
+
+;;;App Specific
 #IfWinActive
 
 #Include %A_ScriptDir%/AppSpecific/RiskOfRain2.ahk
@@ -498,4 +512,4 @@ Return
 
 #Include %A_ScriptDir%/AppSpecific/Greenshot.ahk
 
-#Include %A_ScriptDir%/AppSpecific/GGST.ahk
+;#Include %A_ScriptDir%/AppSpecific/GGST.ahk
