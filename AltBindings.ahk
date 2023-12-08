@@ -103,22 +103,22 @@ Return
 ;Return
 
 ;Disable empty Windows Key while allowing Win+Hotkeys to work
-~LWin::
+~$*LWin::
 Suspend Permit
 Send {Blind}{vkE8 down}
 Return
 
-~LWin Up::
+~$*LWin Up::
 Suspend Permit
 Send {Blind}{vkE8 up}
 return
 
-~RWin::
+~$*RWin::
 Suspend Permit
 Send {Blind}{vkE8 down}
 Return
 
-~RWin Up::
+~$*RWin Up::
 Suspend Permit
 Send {Blind}{vkE8 up}
 return
