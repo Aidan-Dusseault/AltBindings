@@ -485,7 +485,7 @@ selectingMode = 0
 Return
 
 ;;;Modules
-#Include %A_ScriptDir%/Modules/PreviewWindowSnapOver.ahk
+#Include %A_ScriptDir%/Modules/WindowedProjectorSnapOver.ahk
 
 
 
