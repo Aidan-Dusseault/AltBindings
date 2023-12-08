@@ -103,12 +103,26 @@ Return
 ;Return
 
 ;Disable empty Windows Key while allowing Win+Hotkeys to work
+~LWin::
+Suspend Permit
+Send {Blind}{vkE8 down}
+Return
+
 ~LWin Up::
 Suspend Permit
+Send {Blind}{vkE8 up}
 return
+
+~RWin::
+Suspend Permit
+Send {Blind}{vkE8 down}
+Return
+
 ~RWin Up::
 Suspend Permit
+Send {Blind}{vkE8 up}
 return
+
 
 #IfWinNotActive ahk_group EXCLUDE_APPS
 
