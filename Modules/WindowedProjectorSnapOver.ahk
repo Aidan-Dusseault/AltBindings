@@ -9,15 +9,15 @@ WindowedProjectorSnapOverAlwaysOnTop = 0
 	}
 Return
 
-^!#F1::
+^!#F2::
 	Gosub, EngageSnapOver
 Return
 
-^!#F2::
+^!#F3::
 	Gosub, EngageAlwaysOnTop
 Return
 
-^!#Tab::
+^!#F1::
 	Gosub, EngageAlwaysOnTop
 	Gosub, EngageSnapOver
 Return
