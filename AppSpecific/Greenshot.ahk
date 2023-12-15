@@ -1,6 +1,7 @@
 ﻿#IfWinActive Greenshot image editor
 
-~+^c::
++^c::
+	ControlSend, ahk_parent, {Shift down}{Control down}c{Shift up}{Control up}, Greenshot image editor
 	Sleep, 10
 	WinClose, Greenshot image editor
 Return
