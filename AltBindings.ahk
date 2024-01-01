@@ -127,10 +127,10 @@ return
 #IfWinNotActive ahk_group EXCLUDE_APPS
 
 ;Move Mouse During Search
-~$!Space::
-CoordMode, Mouse, Screen
-MouseMove, 0, %A_ScreenHeight%
-Return
+;~$!Space::
+;CoordMode, Mouse, Screen
+;MouseMove, 0, %A_ScreenHeight%
+;Return
 
 *!$XButton1::
 Send {Blind}{PgDn}
