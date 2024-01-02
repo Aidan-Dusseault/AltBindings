@@ -31,9 +31,10 @@ GroupAdd, EXCLUDE_APPS, ahk_exe Darktide.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe SoTGame.exe
 Return
 
-MouseIsOver(WinTitle) {
-    MouseGetPos,,, Win
-    return WinExist(WinTitle . " ahk_id " . Win)
+MouseIsOver(vWinTitle:="", vWinText:="", vExcludeTitle:="", vExcludeText:="")
+{
+	MouseGetPos,,, hWnd
+	return WinExist(vWinTitle (vWinTitle=""?"":" ") "ahk_id " hWnd, vWinText, vExcludeTitle, vExcludeText)
 }
 
 !`::

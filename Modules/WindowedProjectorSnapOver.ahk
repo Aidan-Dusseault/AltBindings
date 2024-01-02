@@ -68,7 +68,7 @@ CheckMousePos:
 	if (WindowedProjectorSnapOverDebugTooltip) {
 		ToolTip, MouseX %WindowedProjectorSnapOverMouseX%`nMouseY %WindowedProjectorSnapOverMouseY%`n WinX %WindowedProjectorSnapOverWinX%`n WinWidth %WindowedProjectorSnapOverWinWidth%`n WinY %WindowedProjectorSnapOverWinY%`n WinHeight %WindowedProjectorSnapOverWinHeight%
 	}
-	if ((WindowedProjectorSnapOverMouseY >= SnapOverTaskbarY) and WindowedProjectorSnapOverMouseY <= (SnapOverTaskbarY + SnapOverTaskbarHeight)) and ((WindowedProjectorSnapOverMouseX >= SnapOverTaskbarX) and WindowedProjectorSnapOverMouseX <= (SnapOverTaskbarX + SnapOverTaskbarWidth)) {
+	if (MouseIsOver("ahk_class Shell_TrayWnd")) {
 		if (!WindowedProjectorSnapOverTaskbarToggle) {
 			WinActivate, ahk_class Shell_TrayWnd
 			WindowedProjectorSnapOverTaskbarToggle = !WindowedProjectorSnapOverTaskbarToggle
@@ -76,9 +76,7 @@ CheckMousePos:
 	}
 	else {
 		WindowedProjectorSnapOverTaskbarToggle = 0
-	}
-	if !(((WindowedProjectorSnapOverMouseY >= SnapOverTaskbarY) and WindowedProjectorSnapOverMouseY <= (SnapOverTaskbarY + SnapOverTaskbarHeight)) and ((WindowedProjectorSnapOverMouseX >= SnapOverTaskbarX) and WindowedProjectorSnapOverMouseX <= (SnapOverTaskbarX + SnapOverTaskbarWidth))) {
-		if ((WindowedProjectorSnapOverMouseY >= WindowedProjectorSnapOverWinY) and WindowedProjectorSnapOverMouseY <= (WindowedProjectorSnapOverWinY+WindowedProjectorSnapOverWinHeight)) {
+		if (MouseIsOver("Windowed Projector (Preview)")) {
 			if ((WindowedProjectorSnapOverMouseX >= WindowedProjectorSnapOverWinX) and WindowedProjectorSnapOverMouseX <= (WindowedProjectorSnapOverWinX + WindowedProjectorSnapOverWinWidth*0.5)) {
 				MouseMove, WindowedProjectorSnapOverWinX+WindowedProjectorSnapOverWinWidth, WindowedProjectorSnapOverMouseY, 0
 				;WinActivate, ahk_class Shell_TrayWnd
@@ -92,4 +90,5 @@ CheckMousePos:
 			}
 		}
 	}
+	
 Return
