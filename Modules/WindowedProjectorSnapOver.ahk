@@ -83,7 +83,7 @@ CheckMousePos:
 			}
 			if ((WindowedProjectorSnapOverMouseX <= (WindowedProjectorSnapOverWinX + WindowedProjectorSnapOverWinWidth)) and WindowedProjectorSnapOverMouseX >= WindowedProjectorSnapOverWinX + WindowedProjectorSnapOverWinWidth*0.5) {
 				MouseMove, WindowedProjectorSnapOverWinX, WindowedProjectorSnapOverMouseY, 0
-				WinActivate, Windowed Projector (Preview)
+				;WinActivate, Windowed Projector (Preview)
 				if (WindowedProjectorSnapOverAlwaysOnTop) {
 					WinSet, AlwaysOnTop, On, Windowed Projector (Preview)
 				}
