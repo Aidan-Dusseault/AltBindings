@@ -43,6 +43,16 @@ EngageAlwaysOnTop:
 		WinSet, AlwaysOnTop, Off, Windowed Projector (Preview)
 	}
 Return
+#IfWinActive Windowed Projector (Preview)
+~$*Esc::
+Suspend Permit
+Return
+
+~$*Esc Up::
+Suspend Permit
+return
+
+#IfWinActive
 
 ;MoveWindows:
 ;	WinGet,Windows,List
