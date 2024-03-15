@@ -1,9 +1,20 @@
+#IfWinActive, Windowed Projector (Preview)
+$*Esc::
+Suspend Permit
+Return
+
+$*Esc Up::
+Suspend Permit
+return
+
+#IfWinActive
+
 WindowedProjectorSnapOverEnabled = 0
 WindowedProjectorSnapOverDebugTooltip = 0
 WindowedProjectorSnapOverAlwaysOnTop = 0
 WindowedProjectorSnapOverTaskbarToggle = 0
 
-^!#F12::
+^!#F11::
 	WindowedProjectorSnapOverDebugTooltip := !WindowedProjectorSnapOverDebugTooltip
 	if (!WindowedProjectorSnapOverDebugTooltip) {
 		ToolTip
@@ -43,16 +54,6 @@ EngageAlwaysOnTop:
 		WinSet, AlwaysOnTop, Off, Windowed Projector (Preview)
 	}
 Return
-#IfWinActive Windowed Projector (Preview)
-~$*Esc::
-Suspend Permit
-Return
-
-~$*Esc Up::
-Suspend Permit
-return
-
-#IfWinActive
 
 ;MoveWindows:
 ;	WinGet,Windows,List
@@ -78,10 +79,12 @@ CheckMousePos:
 	if (WindowedProjectorSnapOverDebugTooltip) {
 		ToolTip, MouseX %WindowedProjectorSnapOverMouseX%`nMouseY %WindowedProjectorSnapOverMouseY%`n WinX %WindowedProjectorSnapOverWinX%`n WinWidth %WindowedProjectorSnapOverWinWidth%`n WinY %WindowedProjectorSnapOverWinY%`n WinHeight %WindowedProjectorSnapOverWinHeight%
 	}
-	if (MouseIsOver("ahk_class Shell_TrayWnd")) {
-		if (!WindowedProjectorSnapOverTaskbarToggle) {
-			WinActivate, ahk_class Shell_TrayWnd
-			WindowedProjectorSnapOverTaskbarToggle = !WindowedProjectorSnapOverTaskbarToggle
+	if ((WindowedProjectorSnapOverMouseX >= SnapOverTaskbarX) and (WindowedProjectorSnapOverMouseX <= (SnapOverTaskbarX + SnapOverTaskbarWidth)) and (WindowedProjectorSnapOverMouseY >= (SnapOverTaskbarY - 200)) and (WindowedProjectorSnapOverMouseY <= (SnapOverTaskbarY + SnapOverTaskbarHeight))) {
+		if (MouseIsOver("ahk_class Shell_TrayWnd")) {
+			if (!WindowedProjectorSnapOverTaskbarToggle) {
+				WinActivate, ahk_class Shell_TrayWnd
+				WindowedProjectorSnapOverTaskbarToggle = !WindowedProjectorSnapOverTaskbarToggle
+			}
 		}
 	}
 	else {

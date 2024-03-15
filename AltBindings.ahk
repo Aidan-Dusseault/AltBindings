@@ -1,6 +1,6 @@
 ﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
-#SingleInstance Ignore
+#SingleInstance Force
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #MaxHotkeysPerInterval 999999
@@ -11,7 +11,6 @@ global selectingMode = 0
 global loopMacroNumberOfLoops = 0
 global loopMax = 200
 
-SetCapsLockState, AlwaysOff
 SetNumLockState, AlwaysOn
 SetScrollLockState, AlwaysOff
 SetTitleMatchMode, 3
@@ -45,9 +44,17 @@ Click, right, up
 Click, left, up
 Return
 
+^!#F12::
+Pause
+Return
+
 ^!+ScrollLock::
 Suspend Permit
 Send {CapsLock}
+Return
+
+~CapsLock Up::
+SetCapsLockState, Off
 Return
 
 ^!+F9::
