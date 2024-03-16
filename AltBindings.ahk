@@ -92,15 +92,15 @@ WinWait, ahk_exe NVIDIA RTX Voice.exe, "NVIDIA RTX Voice"
 WinHide, ahk_exe NVIDIA RTX Voice.exe
 Return
 
-*CapsLock::
-Suspend Permit
-send {Blind}{NumpadClear Down}
-Return
+;*CapsLock::
+;Suspend Permit
+;send {Blind}{NumpadClear Down}
+;Return
 
-*CapsLock UP::
-Suspend Permit
-send {Blind}{NumpadClear Up}
-Return
+;*CapsLock UP::
+;Suspend Permit
+;send {Blind}{NumpadClear Up}
+;Return
 
 ;Windows Search
 ;!Space::
