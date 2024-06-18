@@ -28,6 +28,7 @@ GroupAdd, EXCLUDE_APPS, ahk_exe Control_DX11.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe GGST-Win64-Shipping.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe Darktide.exe
 GroupAdd, EXCLUDE_APPS, ahk_exe SoTGame.exe
+GroupAdd, EXCLUDE_APPS, ahk_exe bg3_dx11.exe
 Return
 
 MouseIsOver(vWinTitle:="", vWinText:="", vExcludeTitle:="", vExcludeText:="")
@@ -53,9 +54,32 @@ Suspend Permit
 Send {CapsLock}
 Return
 
-~CapsLock Up::
+^!+ScrollLock UP::
+Suspend Permit
 SetCapsLockState, Off
 Return
+
+*$CapsLock::
+Click, Down
+Return
+
+*$CapsLock UP::
+Click, Up
+SetCapsLockState, Off
+Return
+
+*$+CapsLock::
+Click, Right, Down
+Return
+
+*$+CapsLock UP::
+Click, Right, Up
+SetCapsLockState, Off
+Return
+
+;~CapsLock Up::
+;SetCapsLockState, Off
+;Return
 
 ^!+F9::
 DetectHiddenWindows, On
